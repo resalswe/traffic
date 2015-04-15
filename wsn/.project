@@ -3,6 +3,8 @@
 	<name>wsn</name>
 	<comment></comment>
 	<projects>
+		<project>mixim-veins</project>
+		<project>veins</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
