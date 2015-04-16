@@ -57,3 +57,7 @@ mixim-veins/examples/bmac/bmac
 mixim-veins/examples/lmac/lmac
 **.vci
 .DS_Store
+.metadata
+mixim-veins/doc
+wsn/simulations/results
+.tkenvlog
