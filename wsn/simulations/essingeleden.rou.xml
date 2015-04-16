@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+  <vType accel="3.0" decel="6.0" id="CarA" length="5.0" minGap="2.5" maxSpeed="70.0" sigma="0.5"/>
+  <vType accel="2.0" decel="6.0" id="CarB" length="7.5" minGap="2.5" maxSpeed="70.0" sigma="0.5"/>
+  
+  <route id="route01" edges="27368517 205884053 205884051 311466216 75242510 205889186"/>
+  
+  <flow id="flow0" type="CarA" route="route01" begin="0" probability="0.75" color="1,0,0" departLane="random"/>
+  <flow id="flow1" type="CarB" route="route01" begin="1" probability="0.75" color="0,1,0" departLane="random"/>
+</routes>
