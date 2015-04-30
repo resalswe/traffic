@@ -23,8 +23,8 @@ module SensorNode extends Host802154_2400MHz
     parameters:
         string sensorType = default("");
 
-//    submodules:
-//        sensors: <sensorType> like ISensor {
-//            @display("p=140,380"); // TODO: Change image to a better one
-//        }
+    submodules:
+        sensors: <sensorType> like ISensor {
+            @display("p=140,380"); // TODO: Change image to a better one
+        }
 }

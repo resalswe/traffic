@@ -16,4 +16,11 @@
 package wsn;
 
 moduleinterface ISensor {
+    parameters:
+        string sensorName;
+            
+    gates:
+        input sensorDataIn;     // Input data recieved from stimuli. This can for example be a Mobility-, Channel model, etc.
+        input sensorCcontrolIn; // Input data recieved from the controller. This can for example be an application or similar.
+        output appDataOut;      // Output data obtained by processing input data. This is usually conntected to a application.
 }

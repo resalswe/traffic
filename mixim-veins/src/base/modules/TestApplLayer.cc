@@ -136,7 +136,7 @@ void TestApplLayer::sendReply(ApplPkt *msg)
 
     coreEV << "sent message with delay " << delay << endl;
 
-    //NOTE: the NetwControl info was already ste by the network layer
+    //NOTE: the NetwControl info was already set by the network layer
     //and stays the same
 }
 

@@ -26,7 +26,7 @@
  * First we have to initialize the module from which we derived ours,
  * in this case BaseLayer.
  *
- * Then we have to intialize the gates and - if necessary - some own
+ * Then we have to initialize the gates and - if necessary - some own
  * variables.
  **/
 void BaseApplLayer::initialize(int stage)
