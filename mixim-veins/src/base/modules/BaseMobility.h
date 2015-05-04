@@ -29,6 +29,8 @@
 #include "Move.h"
 #include "BaseWorldUtility.h"
 
+#include "IMobility.h"
+
 /**
  * @brief Base module for all mobility modules.
  *
@@ -58,14 +60,14 @@
  * @ingroup baseModules
  * @author Daniel Willkomm, Andras Varga
  */
-class MIXIM_API BaseMobility : public MiximBatteryAccess
+class MIXIM_API BaseMobility : public MiximBatteryAccess, public IMobility
 {
   public:
     /**
      * @brief Selects how a node should behave if it reaches the edge
      * of the playground.
      *
-     * @sa handleIfOutside()
+     * @see handleIfOutside()
      */
     enum BorderPolicy {
         REFLECT,       ///< reflect off the wall
@@ -165,16 +167,16 @@ class MIXIM_API BaseMobility : public MiximBatteryAccess
     virtual void initialize(int);
 
     /** @brief Delete dynamically allocated objects*/
-    virtual void finish(){};
+    virtual void finish() {};
 
     /** @brief Returns the current position at the current simulation time. */
-    virtual Coord getCurrentPosition(/*simtime_t_cref stWhen = simTime()*/) const {
+    virtual Coord getCurrentPosition(/*simtime_t_cref stWhen = simTime()*/) {
     	//return move.getPositionAt(stWhen);
     	return move.getStartPos();
     }
 
     /** @brief Returns the current speed at the current simulation time. */
-    virtual Coord getCurrentSpeed() const {
+    virtual Coord getCurrentSpeed() {
     	return move.getDirection() * move.getSpeed();
     }
   protected:

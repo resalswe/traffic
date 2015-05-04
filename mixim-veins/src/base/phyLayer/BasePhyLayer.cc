@@ -144,21 +144,21 @@ MiximRadio* BasePhyLayer::initializeRadio() const {
 										 initialRadioChannel, nbRadioChannels);
 
 	//	- switch times to TX
-	//if no RX to TX defined asume same time as sleep to TX
+	//if no RX to TX defined assume same time as sleep to TX
 	radio->setSwitchTime(MiximRadio::RX, MiximRadio::TX, (hasPar("timeRXToTX") ? par("timeRXToTX") : par("timeSleepToTX")).doubleValue());
-	//if no sleep to TX defined asume same time as RX to TX
+	//if no sleep to TX defined assume same time as RX to TX
 	radio->setSwitchTime(MiximRadio::SLEEP, MiximRadio::TX, (hasPar("timeSleepToTX") ? par("timeSleepToTX") : par("timeRXToTX")).doubleValue());
 
 	//	- switch times to RX
-	//if no TX to RX defined asume same time as sleep to RX
+	//if no TX to RX defined assume same time as sleep to RX
 	radio->setSwitchTime(MiximRadio::TX, MiximRadio::RX, (hasPar("timeTXToRX") ? par("timeTXToRX") : par("timeSleepToRX")).doubleValue());
-	//if no sleep to RX defined asume same time as TX to RX
+	//if no sleep to RX defined assume same time as TX to RX
 	radio->setSwitchTime(MiximRadio::SLEEP, MiximRadio::RX, (hasPar("timeSleepToRX") ? par("timeSleepToRX") : par("timeTXToRX")).doubleValue());
 
 	//	- switch times to sleep
-	//if no TX to sleep defined asume same time as RX to sleep
+	//if no TX to sleep defined assume same time as RX to sleep
 	radio->setSwitchTime(MiximRadio::TX, MiximRadio::SLEEP, (hasPar("timeTXToSleep") ? par("timeTXToSleep") : par("timeRXToSleep")).doubleValue());
-	//if no RX to sleep defined asume same time as TX to sleep
+	//if no RX to sleep defined assume same time as TX to sleep
 	radio->setSwitchTime(MiximRadio::RX, MiximRadio::SLEEP, (hasPar("timeRXToSleep") ? par("timeRXToSleep") : par("timeTXToSleep")).doubleValue());
 
 	return radio;

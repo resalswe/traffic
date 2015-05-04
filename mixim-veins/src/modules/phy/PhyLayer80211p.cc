@@ -57,7 +57,15 @@ void PhyLayer80211p::initialize(int stage) {
 AnalogueModel* PhyLayer80211p::getAnalogueModelFromName(const std::string& name, ParameterMap& params) const {
 
 	if (name == "SimplePathlossModel") {
-		return initializeSimplePathlossModel(params);
+	    // FIXME: Temporary fix. Should it be here or not. Should not be multiple places for these parameters.
+	    // All should be obtained from the same source
+	    const Coord& playground = *(world->getPgs());
+ 	    params["useTorus"] = world->useTorus();
+	    params["PgsX"] = playground.x;
+	    params["PgsY"] = playground.y;
+	    params["PgsZ"] = playground.z;
+
+	    return createAnalogueModel<SimplePathlossModel>(params);
 	}
 	else if (name == "LogNormalShadowing")
 	{
