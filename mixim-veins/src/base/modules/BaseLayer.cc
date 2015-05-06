@@ -72,7 +72,7 @@ void BaseLayer::initialize(int stage)
  * You should not make any changes in this function but implement all
  * your functionality into the handle*Msg functions called from here.
  *
- * @sa handleUpperMsg, handleLowerMsg, handleSelfMsg
+ * @see handleUpperMsg, handleLowerMsg, handleSelfMsg
  **/
 void BaseLayer::handleMessage(cMessage* msg)
 {

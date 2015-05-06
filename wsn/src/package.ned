@@ -1,3 +1,3 @@
-package wsn;
+package com.dektech.wsn;
 
 @license(LGPL);

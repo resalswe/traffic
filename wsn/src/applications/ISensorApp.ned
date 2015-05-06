@@ -13,18 +13,13 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package wsn.simulations;
+package com.dektech.wsn.applications;
 
-import org.mixim.modules.node.Host802154_2400MHz;
-import wsn.ISensor;
-
-module SensorNode extends Host802154_2400MHz
-{
+moduleinterface ISensorApp {
     parameters:
-        string sensorType = default("");
-
-    submodules:
-        sensors: <sensorType> like ISensor {
-            @display("p=140,380"); // TODO: Change image to a better one
-        }
+        int numberOfSensors;
+        
+    gates:
+        output sensorControl[numOfSensors]; // Control and configuration data sent to the sensor module.
+        input sensorData[numOfSensors]; // Received sensor data from the sensor module.
 }

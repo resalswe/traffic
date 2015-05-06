@@ -13,21 +13,15 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package com.dektech.wsn.simulations;
+package com.dektech.wsn.sensors;
 
-import org.mixim.nodes.Scenario;
-import com.dektech.wsn.nodes.Car;
-import com.dektech.wsn.nodes.SensorNode;
-
-network Essingeleden extends Scenario
-{
+moduleinterface ISensor {
     parameters:
-    	int numHosts;
-    
-    submodules:
-        node[numHosts]: SensorNode {
-            parameters:
-                numHosts = numHosts;
-                @display("p=158,99;b=42,42,rect,yellow;i=device/wifilaptop");
-        }
+        int applicationId;
+        string sensorTypeName;
+            
+    gates:
+        input sensorDataIn;     // Input data recieved from stimuli. This can for example be a Mobility or Channel model.
+        input sensorControlIn;  // Input data recieved from the controller. This can for example be an application.
+        output appDataOut;      // Output data obtained by processing input data. This is usually conntected to an application.
 }

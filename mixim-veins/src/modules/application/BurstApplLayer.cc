@@ -54,7 +54,7 @@ void BurstApplLayer::handleSelfMsg(cMessage *msg)
         }
         break;
     default:
-        EV <<" Unkown selfmessage! -> delete, kind: "<<msg->getKind()<<endl;
+        EV <<" Unknown selfmessage! -> delete, kind: "<<msg->getKind()<<endl;
         break;
     }
 }

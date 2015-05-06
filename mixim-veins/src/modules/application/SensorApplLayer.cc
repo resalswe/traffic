@@ -219,7 +219,7 @@ void SensorApplLayer::handleLowerMsg(cMessage * msg) {
  *
  * There are no other timers implemented for this module.
  *
- * @sa sendData
+ * @see sendData
  **/
 void SensorApplLayer::handleSelfMsg(cMessage * msg) {
 	switch (msg->getKind()) {

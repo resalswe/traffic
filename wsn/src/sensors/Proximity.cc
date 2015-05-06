@@ -13,16 +13,16 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package wsn.simulations;
+#include <Proximity.h>
 
-module Car
-{
- 	parameters:
- 	    string veinsmobilityType; //type of the mobility module
- 	     	        
-	submodules:
-		veinsmobility: <veinsmobilityType> like org.mixim.base.modules.IMobility {
-            parameters:
-                @display("p=130,172;i=block/cogwheel");
-		}   
+namespace wsn {
+namespace sensors {
+
+const std::string Proximity::TYPE_NAME = "Proximity";
+
+std::string Proximity::getSensorTypeName() {
+    return Proximity::TYPE_NAME;
 }
+
+} // sensors
+} // wsn

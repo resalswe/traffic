@@ -13,14 +13,26 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package wsn;
+#ifndef PROXIMITY_H_
+#define PROXIMITY_H_
 
-moduleinterface ISensor {
-    parameters:
-        string sensorName;
-            
-    gates:
-        input sensorDataIn;     // Input data recieved from stimuli. This can for example be a Mobility-, Channel model, etc.
-        input sensorCcontrolIn; // Input data recieved from the controller. This can for example be an application or similar.
-        output appDataOut;      // Output data obtained by processing input data. This is usually conntected to a application.
-}
+#include "ISensor.h"
+
+namespace wsn {
+namespace sensors {
+
+class Proximity: public ISensor {
+
+private:
+    static const std::string TYPE_NAME;
+
+public:
+    virtual ~Proximity() {};
+
+    std::string getSensorTypeName();
+};
+
+} // sensors
+} // wsn
+
+#endif /* PROXIMITY_H_ */

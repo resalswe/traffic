@@ -13,21 +13,16 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package com.dektech.wsn.simulations;
+package com.dektech.wsn.nodes;
 
-import org.mixim.nodes.Scenario;
-import com.dektech.wsn.nodes.Car;
-import com.dektech.wsn.nodes.SensorNode;
-
-network Essingeleden extends Scenario
+module Car
 {
-    parameters:
-    	int numHosts;
-    
-    submodules:
-        node[numHosts]: SensorNode {
+ 	parameters:
+ 	    string veinsmobilityType; //type of the mobility module
+ 	     	        
+	submodules:
+		veinsmobility: <veinsmobilityType> like org.mixim.base.modules.IMobility {
             parameters:
-                numHosts = numHosts;
-                @display("p=158,99;b=42,42,rect,yellow;i=device/wifilaptop");
-        }
+                @display("p=130,172;i=block/cogwheel");
+		}   
 }

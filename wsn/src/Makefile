@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for wsn
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep -L../../mixim-veins/out/$$\(CONFIGNAME\)/src -lmixim -KMIXIM_VEINS_PROJ=../../mixim-veins
+#  opp_makemake -f --deep -I../../mixim-veins/src/inet_stub/util -I../../mixim-veins/src/base/messages -I../../mixim-veins/src/inet_stub/linklayer/contract -I../../mixim-veins/src/inet_stub/mobility -I../../mixim-veins/src/base/modules -I../../mixim-veins/src/base/utils -I../../mixim-veins/src -I../../mixim-veins/src/inet_stub/mobility/models -I../../mixim-veins/src/base -I../../mixim-veins/src/inet_stub/base -I../../mixim-veins/src/base/phyLayer -I../../mixim-veins/src/base/connectionManager -I../../mixim-veins/src/inet_stub/networklayer/common -L../../mixim-veins/out/$$\(CONFIGNAME\)/src -lmixim -KMIXIM_VEINS_PROJ=../../mixim-veins
 #
 
 # Name of target to be created (-o option)
@@ -14,7 +14,25 @@ USERIF_LIBS = $(ALL_ENV_LIBS) # that is, $(TKENV_LIBS) $(CMDENV_LIBS)
 #USERIF_LIBS = $(TKENV_LIBS)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I.
+INCLUDE_PATH = \
+    -I../../mixim-veins/src/inet_stub/util \
+    -I../../mixim-veins/src/base/messages \
+    -I../../mixim-veins/src/inet_stub/linklayer/contract \
+    -I../../mixim-veins/src/inet_stub/mobility \
+    -I../../mixim-veins/src/base/modules \
+    -I../../mixim-veins/src/base/utils \
+    -I../../mixim-veins/src \
+    -I../../mixim-veins/src/inet_stub/mobility/models \
+    -I../../mixim-veins/src/base \
+    -I../../mixim-veins/src/inet_stub/base \
+    -I../../mixim-veins/src/base/phyLayer \
+    -I../../mixim-veins/src/base/connectionManager \
+    -I../../mixim-veins/src/inet_stub/networklayer/common \
+    -I. \
+    -Iapplications \
+    -Inodes \
+    -Isensors \
+    -Iutils
 
 # Additional object and library files to link with
 EXTRA_OBJS =
@@ -29,7 +47,7 @@ PROJECTRELATIVE_PATH = src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS =
+OBJS = $O/applications/BaseSensorAppl.o $O/sensors/Proximity.o
 
 # Message files
 MSGFILES =
@@ -109,13 +127,38 @@ clean:
 	$(Q)-rm -rf $O
 	$(Q)-rm -f wsn wsn.exe libwsn.so libwsn.a libwsn.dll libwsn.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h
+	$(Q)-rm -f applications/*_m.cc applications/*_m.h
+	$(Q)-rm -f nodes/*_m.cc nodes/*_m.h
+	$(Q)-rm -f sensors/*_m.cc sensors/*_m.h
+	$(Q)-rm -f utils/*_m.cc utils/*_m.h
 
 cleanall: clean
 	$(Q)-rm -rf $(PROJECT_OUTPUT_DIR)
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc applications/*.cc nodes/*.cc sensors/*.cc utils/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
+$O/applications/BaseSensorAppl.o: applications/BaseSensorAppl.cc \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseApplLayer.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseBattery.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseLayer.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseModule.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/MiximBatteryAccess.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/HostState.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/MiXiMDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/PassedMessage.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/SimpleAddress.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/miximkerneldefs.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/INETDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/linklayer/contract/MACAddress.h \
+	applications/BaseSensorAppl.h \
+	applications/ISensorApp.h \
+	sensors/ISensor.h \
+	utils/ConstantsWsn.h
+$O/sensors/Proximity.o: sensors/Proximity.cc \
+	sensors/ISensor.h \
+	sensors/Proximity.h \
+	utils/ConstantsWsn.h
 
