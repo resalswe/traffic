@@ -30,6 +30,7 @@ INCLUDE_PATH = \
     -I../../mixim-veins/src/inet_stub/networklayer/common \
     -I. \
     -Iapplications \
+    -Ibase \
     -Inodes \
     -Isensors \
     -Iutils
@@ -47,7 +48,7 @@ PROJECTRELATIVE_PATH = src
 O = $(PROJECT_OUTPUT_DIR)/$(CONFIGNAME)/$(PROJECTRELATIVE_PATH)
 
 # Object files for local .cc and .msg files
-OBJS = $O/applications/BaseSensorAppl.o $O/sensors/Proximity.o
+OBJS = $O/base/BaseSensor.o $O/base/BaseSensorAppl.o $O/sensors/Proximity.o
 
 # Message files
 MSGFILES =
@@ -128,6 +129,7 @@ clean:
 	$(Q)-rm -f wsn wsn.exe libwsn.so libwsn.a libwsn.dll libwsn.dylib
 	$(Q)-rm -f ./*_m.cc ./*_m.h
 	$(Q)-rm -f applications/*_m.cc applications/*_m.h
+	$(Q)-rm -f base/*_m.cc base/*_m.h
 	$(Q)-rm -f nodes/*_m.cc nodes/*_m.h
 	$(Q)-rm -f sensors/*_m.cc sensors/*_m.h
 	$(Q)-rm -f utils/*_m.cc utils/*_m.h
@@ -137,10 +139,20 @@ cleanall: clean
 
 depend:
 	$(qecho) Creating dependencies...
-	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc applications/*.cc nodes/*.cc sensors/*.cc utils/*.cc
+	$(Q)$(MAKEDEPEND) $(INCLUDE_PATH) -f Makefile -P\$$O/ -- $(MSG_CC_FILES)  ./*.cc applications/*.cc base/*.cc nodes/*.cc sensors/*.cc utils/*.cc
 
 # DO NOT DELETE THIS LINE -- make depend depends on it.
-$O/applications/BaseSensorAppl.o: applications/BaseSensorAppl.cc \
+$O/base/BaseSensor.o: base/BaseSensor.cc \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseBattery.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseModule.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/MiximBatteryAccess.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/HostState.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/MiXiMDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/miximkerneldefs.h \
+	base/BaseSensor.h \
+	base/ISensor.h \
+	utils/ConstantsWsn.h
+$O/base/BaseSensorAppl.o: base/BaseSensorAppl.cc \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseApplLayer.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseBattery.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseLayer.h \
@@ -153,12 +165,20 @@ $O/applications/BaseSensorAppl.o: applications/BaseSensorAppl.cc \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/miximkerneldefs.h \
 	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/INETDefs.h \
 	$(MIXIM_VEINS_PROJ)/src/inet_stub/linklayer/contract/MACAddress.h \
-	applications/BaseSensorAppl.h \
-	applications/ISensorApp.h \
-	sensors/ISensor.h \
+	base/BaseSensor.h \
+	base/BaseSensorAppl.h \
+	base/ISensor.h \
+	base/ISensorApp.h \
 	utils/ConstantsWsn.h
 $O/sensors/Proximity.o: sensors/Proximity.cc \
-	sensors/ISensor.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseBattery.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseModule.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/MiximBatteryAccess.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/HostState.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/MiXiMDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/miximkerneldefs.h \
+	base/BaseSensor.h \
+	base/ISensor.h \
 	sensors/Proximity.h \
 	utils/ConstantsWsn.h
 

@@ -51,7 +51,7 @@
  *
  * The base module additionally provides a function findHost which
  * returns a pointer to the host module and a function hostIndex to
- * return the index of the host module. The latter one correspondes to
+ * return the index of the host module. The latter one corresponds to
  * the index shown in tkenv and comes in very handy for testing and
  * debugging using tkenv. It is used e.g. in all the 'print' macros
  * used for debugging.

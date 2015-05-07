@@ -16,13 +16,14 @@
 #ifndef PROXIMITY_H_
 #define PROXIMITY_H_
 
-#include "ISensor.h"
+#include <string>
+
+#include "base/BaseSensor.h"
 
 namespace wsn {
 namespace sensors {
 
-class Proximity: public ISensor {
-
+class Proximity: public base::BaseSensor {
 private:
     static const std::string TYPE_NAME;
 

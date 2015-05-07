@@ -16,16 +16,14 @@
 #include <BaseSensorAppl.h>
 
 namespace wsn {
-namespace applications {
+namespace base {
 
 // Constructor
 BaseSensorAppl::BaseSensorAppl() :
-        numberOfSensors(-1) , dataGateBaseId(-1), controlGateBaseId(-1)
-{
+        numberOfSensors(-1), dataGateBaseId(-1), controlGateBaseId(-1) {
 }
 
 /**
- *
  */
 void BaseSensorAppl::initialize(int stage) {
     BaseApplLayer::initialize(stage);
@@ -47,18 +45,16 @@ void BaseSensorAppl::initialize(int stage) {
 }
 
 /**
- *
  */
 void BaseSensorAppl::initialiseSensors() {
 
-    cMessage* typeNameMsg = new cMessage("typeName", sensors::ISensor::GET_TYPE_NAME);
     for (int i = 0; i < numberOfSensors; ++i) {
+        cMessage* typeNameMsg = new cMessage("typeName", BaseSensor::SC_INIT);
         send(typeNameMsg, controlGateBaseId + i);
     }
 }
 
 /**
- *
  */
 void BaseSensorAppl::handleMessage(cMessage* msg) {
 
@@ -72,15 +68,13 @@ void BaseSensorAppl::handleMessage(cMessage* msg) {
 }
 
 /**
- *
  */
 void BaseSensorAppl::handleSensorData(cMessage* msg) {
-    EV << "BaseApplLayer: handleSelfMsg not redefined; delete msg\n";
+    EV << "BaseApplLayer: handleSensorData not redefined; delete msg\n";
     delete msg;
 }
 
 /**
- *
  */
 void BaseSensorAppl::handleSelfMsg(cMessage* msg) {
     switch (msg->getKind()) {
@@ -88,7 +82,8 @@ void BaseSensorAppl::handleSelfMsg(cMessage* msg) {
         initialiseSensors();
         break;
     default:
-        EV << "Unknown self message! -> delete, kind: " << msg->getKind() << endl;
+        EV << "Unknown self message! -> delete, kind: " << msg->getKind()
+                  << endl;
         break;
     }
 
@@ -97,8 +92,7 @@ void BaseSensorAppl::handleSelfMsg(cMessage* msg) {
 
 // Destructor
 BaseSensorAppl::~BaseSensorAppl() {
-
 }
 
-} // applications
+} // base
 } // wsn

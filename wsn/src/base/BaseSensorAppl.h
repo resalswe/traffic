@@ -20,56 +20,86 @@
 #include <BaseApplLayer.h>
 
 #include "ISensorApp.h"
-#include "sensors/ISensor.h"
+#include "base/BaseSensor.h"
 #include "utils/ConstantsWsn.h"
 
 namespace wsn {
-namespace applications {
+namespace base {
 
+/** @brief
+ *
+ */
 class BaseSensorAppl: public BaseApplLayer, public ISensorApp {
 protected:
+    /**
+     * Number of available sensors.
+     */
     int numberOfSensors;
 
+    /** @brief
+     * First gate id of sensor data i.e. the base identification id. The rest
+     * are incremented up to number of available sensors i.e.
+     * 1..(numberOfSenbsor-1).
+     */
     gateId dataGateBaseId;
+
+    /** @brief
+     * First gate id of sensor control i.e. the base identification id. The
+     * rest are incremented up to number of available sensors i.e.
+     * 1..(numberOfSenbsor-1).
+     */
     gateId controlGateBaseId;
 
+    /** @brief
+     * Self message to start initialization of the sensors.
+     */
     cMessage* initSensors;
 
     enum SelfMessages {
-        INIT_SENSORS, LAST_BASE_SELF_MSG_KIND = 10
+        INIT_SENSORS, LAST_BASE_SELF_MSG_KIND
     };
 
 public:
     BaseSensorAppl();
     virtual ~BaseSensorAppl();
 
-    /** @brief Initialization of the module and some variables*/
+    /** @brief
+     * Initialization of the module and some variables
+     **/
     virtual void initialize(int);
 
 protected:
-    /** @brief Called every time a message arrives*/
+    /** @brief
+     * Called every time a message arrives
+     **/
     virtual void handleMessage(cMessage* msg);
 
-    /**
-     * @brief Handle sensor data messages both data and control responses.
+    /** @brief
+     * Handle sensor data messages this includes both data and control
+     * responses.
      *
      * The basic sensor application layer just silently deletes all messages it
      * receives.
+     *
+     * @param msg The incoming message to process.
      **/
     virtual void handleSensorData(cMessage* msg);
 
-    /**
+    /** @brief
+     * Handles all self messages for this module.
      *
+     * @param msg Incoming selfmessage to process.
      */
     virtual void handleSelfMsg(cMessage * msg);
 
-    /**
-     *
+    /** @brief
+     * Initializes the sensors connected to this application. This includes
+     * obtaining the type of sensor etc.
      */
     virtual void initialiseSensors();
 };
 
-} // applications
+} // base
 } // wsn
 
 #endif /* BASESENSORAPPL_H_ */

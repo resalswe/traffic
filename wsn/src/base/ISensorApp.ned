@@ -13,7 +13,7 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-package com.dektech.wsn.applications;
+package com.dektech.wsn.base;
 
 moduleinterface ISensorApp {
     parameters:

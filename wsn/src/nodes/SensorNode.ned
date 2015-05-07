@@ -16,8 +16,8 @@
 package com.dektech.wsn.nodes;
 
 import org.mixim.modules.node.Host802154_2400MHz;
-import com.dektech.wsn.sensors.ISensor;
-import com.dektech.wsn.applications.ISensorApp;
+import com.dektech.wsn.base.ISensor;
+import com.dektech.wsn.base.ISensorApp;
 
 module SensorNode extends Host802154_2400MHz
 {

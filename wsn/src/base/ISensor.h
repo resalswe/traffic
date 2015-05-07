@@ -16,12 +16,10 @@
 #ifndef ISENSOR_H_
 #define ISENSOR_H_
 
-#include <string>
-
 #include "utils/ConstantsWsn.h"
 
 namespace wsn {
-namespace sensors {
+namespace base {
 
 /**
  * Interface for the different types of sensors available to a sensor node
@@ -31,42 +29,8 @@ namespace sensors {
  */
 class ISensor {
 public:
-    enum SensorCtrl {
-        GET_TYPE_NAME,
-        START_MEASSURE,
-        STOP_MEASSURE,
-        LAST_BASE_SENSOR_KIND = 500
-    };
-
+    // Destructor
     virtual ~ISensor() {};
-
-    /**
-     * Obtain the type name of the sensor.
-     *
-     * @return Type name of the sensor.
-     */
-    virtual std::string getSensorTypeName() = 0;
-
-    /**
-     * Obtain the control gate identification for this sensor.
-     *
-     * @return control gate id for this sensor.
-     */
-    virtual gateId getSensorControlGateId() = 0;
-
-    /**
-     * Obtain the data input gate identification for this sensor.
-     *
-     * @return Data input gate id for this sensor.
-     */
-    virtual gateId getSensorDataInId() = 0;
-
-    /**
-     * Obtain the application data output gate identification for this sensor.
-     *
-     * @return Application data gate id for this sensor.
-     */
-    virtual gateId getAppDataOutId() = 0;
 };
 
 }
