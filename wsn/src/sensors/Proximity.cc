@@ -13,12 +13,60 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
+#include "FindModule.h"
+
 #include <Proximity.h>
+
 
 namespace wsn {
 namespace sensors {
 
 const std::string Proximity::TYPE_NAME = "Proximity";
+
+const simsignalwrap_t Proximity::mobilityStateChangedSignal = simsignalwrap_t(MIXIM_SIGNAL_MOBILITY_CHANGE_NAME);
+
+Define_Module(Proximity)
+
+/**
+ */
+void Proximity::initialize(int stage) {
+    BaseSensor::initialize(stage);
+
+    if (stage == 0) {
+        // TODO: read in parameters
+
+        findHost()->subscribe(mobilityStateChangedSignal.initialize(), this);
+
+        const cModule* const mod = getParentModule();
+        ownMobility = FindModule<IMobility*>::findSubModule(mod);
+        if (ownMobility == NULL) {
+            opp_error("Could not find mobility module");
+        }
+    }
+}
+
+/**
+ */
+void Proximity::handleSelfMsg(cMessage* msg) {
+}
+
+/**
+ */
+void Proximity::handleCtrlMsg(cMessage* msg) {
+}
+
+/**
+ */
+void Proximity::receiveSignal(cComponent* source, simsignal_t signalID,
+        cObject* obj) {
+
+    if(signalID == mobilityStateChangedSignal) {
+        IMobility* const mobility = check_and_cast<IMobility*>(obj);
+        Coord pos = mobility->getCurrentPosition();
+
+        EV << "Position[x, y] = [" << pos.x << ", " << pos.y << "]." << std::endl;
+    }
+}
 
 std::string Proximity::getSensorTypeName() {
     return Proximity::TYPE_NAME;

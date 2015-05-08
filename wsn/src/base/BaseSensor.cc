@@ -13,7 +13,9 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#include <BaseSensor.h>
+#include <FindModule.h>
+
+#include "BaseSensor.h"
 
 namespace wsn {
 namespace base {

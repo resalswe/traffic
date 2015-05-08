@@ -25,12 +25,43 @@ namespace sensors {
 
 class Proximity: public base::BaseSensor {
 private:
+    /** @brief Type name of this sensor */
     static const std::string TYPE_NAME;
+
+    /** @brief A signal used to subscribe to mobility state changes. */
+    const static simsignalwrap_t mobilityStateChangedSignal;
+
+    IMobility* ownMobility;
 
 public:
     virtual ~Proximity() {};
 
+    /**
+     * @see cSimpleModule::initialize(int)
+     */
+    void initialize(int stage);
+
+    /**
+     * @see BaseSensor::handleSelfMsg(cMessage*)
+     */
+    virtual void handleSelfMsg(cMessage*);
+
+    /**
+     * @see BaseSensor::handleCtrlMsg(cMessage*)
+     */
+    virtual void handleCtrlMsg(cMessage*);
+
+    /**
+     * @see BaseModel::receiveSignal(cComponent*, simsignal_t, cObject*)
+     */
+    virtual void receiveSignal(cComponent *source, simsignal_t signalID,
+            cObject *obj);
+
+    /**
+     * @see BaseSensor::getSensorTypeName()
+     */
     std::string getSensorTypeName();
+
 };
 
 } // sensors

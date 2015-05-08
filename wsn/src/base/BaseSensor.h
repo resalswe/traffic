@@ -18,6 +18,8 @@
 
 #include <string>
 #include <MiximBatteryAccess.h>
+#include <MiXiMDefs.h>
+#include <BaseMobility.h>
 
 #include "ISensor.h"
 #include "utils/ConstantsWsn.h"
@@ -105,6 +107,7 @@ public:
      *
      */
     void sendAppData(cMessage*);
+
 };
 
 } // base

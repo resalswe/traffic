@@ -144,11 +144,19 @@ depend:
 # DO NOT DELETE THIS LINE -- make depend depends on it.
 $O/base/BaseSensor.o: base/BaseSensor.cc \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseBattery.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseMobility.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseModule.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseWorldUtility.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/MiximBatteryAccess.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/FindModule.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/HostState.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/MiXiMDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/Move.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/miximkerneldefs.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/Coord.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/INETDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/mobility/IMobility.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/util/FWMath.h \
 	base/BaseSensor.h \
 	base/ISensor.h \
 	utils/ConstantsWsn.h
@@ -156,15 +164,21 @@ $O/base/BaseSensorAppl.o: base/BaseSensorAppl.cc \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseApplLayer.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseBattery.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseLayer.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseMobility.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseModule.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseWorldUtility.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/MiximBatteryAccess.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/HostState.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/MiXiMDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/Move.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/PassedMessage.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/SimpleAddress.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/miximkerneldefs.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/Coord.h \
 	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/INETDefs.h \
 	$(MIXIM_VEINS_PROJ)/src/inet_stub/linklayer/contract/MACAddress.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/mobility/IMobility.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/util/FWMath.h \
 	base/BaseSensor.h \
 	base/BaseSensorAppl.h \
 	base/ISensor.h \
@@ -172,11 +186,19 @@ $O/base/BaseSensorAppl.o: base/BaseSensorAppl.cc \
 	utils/ConstantsWsn.h
 $O/sensors/Proximity.o: sensors/Proximity.cc \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseBattery.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseMobility.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseModule.h \
+	$(MIXIM_VEINS_PROJ)/src/base/modules/BaseWorldUtility.h \
 	$(MIXIM_VEINS_PROJ)/src/base/modules/MiximBatteryAccess.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/FindModule.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/HostState.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/MiXiMDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/base/utils/Move.h \
 	$(MIXIM_VEINS_PROJ)/src/base/utils/miximkerneldefs.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/Coord.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/base/INETDefs.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/mobility/IMobility.h \
+	$(MIXIM_VEINS_PROJ)/src/inet_stub/util/FWMath.h \
 	base/BaseSensor.h \
 	base/ISensor.h \
 	sensors/Proximity.h \

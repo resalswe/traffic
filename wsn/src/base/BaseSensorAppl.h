@@ -68,11 +68,15 @@ public:
      **/
     virtual void initialize(int);
 
-protected:
     /** @brief
-     * Called every time a message arrives
+     * Called every time a message arrives. It separates the handling of
+     * messages into separate method i.e. handleSensorData, handleSelfMsg etc.
+     *
+     * @note In most cases this method is not needed to be overridden.
      **/
     virtual void handleMessage(cMessage* msg);
+
+protected:
 
     /** @brief
      * Handle sensor data messages this includes both data and control
@@ -90,7 +94,7 @@ protected:
      *
      * @param msg Incoming selfmessage to process.
      */
-    virtual void handleSelfMsg(cMessage * msg);
+    virtual void handleSelfMsg(cMessage* msg);
 
     /** @brief
      * Initializes the sensors connected to this application. This includes

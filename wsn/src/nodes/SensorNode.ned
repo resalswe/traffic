@@ -22,7 +22,7 @@ import com.dektech.wsn.base.ISensorApp;
 module SensorNode extends Host802154_2400MHz
 {
     parameters:
-        string sensorType = default("");
+        string sensorType = default("Proximity, Proximity");
         int numOfSensors = 1;
 
         @display("bgb=315,429");
